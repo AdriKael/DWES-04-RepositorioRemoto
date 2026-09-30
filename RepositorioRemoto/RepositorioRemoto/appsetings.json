@@ -1,0 +1,9 @@
+﻿{
+  "ApiSettings": {
+    "BaseUrl": "https://jsonplaceholder.typicode.com",
+    "ConnectionStrings": {
+      "PostgreSQL": "Host=localhost;Port=5432;Database=usuarios;Username=postgres;Password=postgres",
+      "Redis": "localhost:6379"
+    }
+  }
+}

@@ -8,5 +8,9 @@ public record Usuario(
     int Id,
     string Name,
     string Username,
-    string Email
+    string Email,
+    string Address,
+    string Company,
+    string Phone,
+    string WebSite
 );
