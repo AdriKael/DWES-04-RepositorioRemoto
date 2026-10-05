@@ -1,11 +1,17 @@
-﻿namespace RepositorioRemoto.Dto;
+﻿using RepositorioRemoto.Dto.User;
+
+namespace RepositorioRemoto.Dto;
 
 /// <summary>
-/// DTO para actualizar un usuario existente en la API.
+///     DTO para actualizar un usuario existente en la API.
 /// </summary>
 public record UpdateUserRequest(
     int Id,
     string Name,
-    string Username,
-    string Email
+    string UserName,
+    string Email,
+    AddressDto Address,
+    string Phone,
+    string Website,
+    CompanyDto Company
 );
