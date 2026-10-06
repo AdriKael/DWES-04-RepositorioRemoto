@@ -69,6 +69,24 @@ public class UserServiceCasosCorrectosTest : UserServiceTestBase {
     }
 
     [Test]
+    public async Task GetByIdAsync_EnApi_CreaAñadeCacheYRetornaUsuario() {
+        // Arrange
+        var user = CreateUser(1);
+        Cache.Setup(x => x.GetAsync(1)).ReturnsAsync((User?)null);
+        Repository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(Result.Failure<User, DomainErrors>(UsersError.NotFoundError(1)));
+        Api.Setup(x => x.GetUsuarioByIdAsync(1)).ReturnsAsync(user);
+        Repository.Setup(x => x.CreateAsync(user)).ReturnsAsync(Result.Success<User, DomainErrors>(user));
+
+        // Act
+        var result = await Service.GetByIdAsync(1);
+
+        // Assert
+        result.Value.Should().Be(user);
+        Repository.Verify(x => x.CreateAsync(user), Times.Once);
+        Cache.Verify(x => x.AddAsync(user), Times.Once);
+    }
+
+    [Test]
     public async Task CreateAsync_DatosValidos_CreaGuardaYNotifica() {
         // Arrange
         var request = CreateRequest();
@@ -116,5 +134,21 @@ public class UserServiceCasosCorrectosTest : UserServiceTestBase {
         // Assert
         result.IsSuccess.Should().BeTrue();
         result.Value.Should().BeTrue();
+    }
+
+    [Test]
+    public async Task DeleteAsync_UsuarioExistente_EliminaInvalidaCacheYNotifica() {
+        // Arrange
+        Repository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(Result.Success<User, DomainErrors>(CreateUser(1)));
+        Api.Setup(x => x.DeleteUsuarioAsync(1)).Returns(Task.CompletedTask);
+        Repository.Setup(x => x.DeleteAsync(1)).ReturnsAsync(Result.Success<User, DomainErrors>(CreateUser(1)));
+
+        // Act
+        var result = await Service.DeleteAsync(1);
+
+        // Assert
+        result.IsSuccess.Should().BeTrue();
+        Cache.Verify(x => x.RemoveAsync(1), Times.Once);
+        Notifications.Verify(x => x.Notificar(It.IsAny<Notification>()), Times.Once);
     }
 }

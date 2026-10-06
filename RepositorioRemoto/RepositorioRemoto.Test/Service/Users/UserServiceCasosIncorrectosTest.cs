@@ -49,4 +49,65 @@ public class UserServiceCasosIncorrectosTest : UserServiceTestBase {
         result.Error.Should().BeOfType<UserErrors.NotFoundError>();
         Api.Verify(x => x.DeleteUsuarioAsync(It.IsAny<int>()), Times.Never);
     }
+
+    [Test]
+    public async Task GetByIdAsync_ErrorAlGuardarUsuarioRemoto_RetornaElErrorDelRepositorio() {
+        // Arrange
+        var user = CreateUser(1);
+        Cache.Setup(x => x.GetAsync(1)).ReturnsAsync((User?)null);
+        Repository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(Result.Failure<User, DomainErrors>(UsersError.NotFoundError(1)));
+        Api.Setup(x => x.GetUsuarioByIdAsync(1)).ReturnsAsync(user);
+        var error = UsersError.ValidationError("user", "no guardado");
+        Repository.Setup(x => x.CreateAsync(user)).ReturnsAsync(Result.Failure<User, DomainErrors>(error));
+
+        // Act
+        var result = await Service.GetByIdAsync(1);
+
+        // Assert
+        result.IsFailure.Should().BeTrue();
+        result.Error.Should().Be(error);
+    }
+
+    [Test]
+    public async Task GetAllAsync_ErrorDelRepositorio_RetornaErrorDeServicio() {
+        // Arrange
+        Repository.Setup(x => x.GetAllAsync()).ThrowsAsync(new InvalidOperationException());
+
+        // Act
+        var result = await Service.GetAllAsync();
+
+        // Assert
+        result.IsFailure.Should().BeTrue();
+        result.Error.Should().BeOfType<ServiceErrors.GetAllError>();
+    }
+
+    [Test]
+    public async Task CreateAsync_ErrorDeApi_RetornaErrorDeApi() {
+        // Arrange
+        var request = CreateRequest();
+        Validator.Setup(x => x.Validate(It.IsAny<User>())).Returns(Result.Success<User, DomainErrors>(CreateUser(0)));
+        Api.Setup(x => x.CreateUsuarioAsync(request)).ThrowsAsync(new InvalidOperationException());
+
+        // Act
+        var result = await Service.CreateAsync(request);
+
+        // Assert
+        result.IsFailure.Should().BeTrue();
+        result.Error.Should().BeOfType<ServiceErrors.CreateError>();
+    }
+
+    [Test]
+    public async Task ExportToJsonAsync_ErrorDeStorage_RetornaErrorDeServicio() {
+        // Arrange
+        Repository.Setup(x => x.GetAllAsync()).ReturnsAsync([CreateUser(1)]);
+        Storage.Setup(x => x.ExportarJsonAsync(It.IsAny<IEnumerable<User>>(), It.IsAny<string>()))
+            .ThrowsAsync(new InvalidOperationException());
+
+        // Act
+        var result = await Service.ExportToJsonAsync();
+
+        // Assert
+        result.IsFailure.Should().BeTrue();
+        result.Error.Should().BeOfType<ServiceErrors.ExportToJsonError>();
+    }
 }
