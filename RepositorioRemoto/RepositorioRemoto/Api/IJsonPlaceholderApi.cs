@@ -15,26 +15,26 @@ public interface IJsonPlaceholderApi {
     ///     GET /users - Obtiene todos los usuarios.
     /// </summary>
     [Get("/users")]
-    Task<List<Usuario>> GetUsuariosAsync();
+    Task<List<User>> GetUsuariosAsync();
 
     /// <summary>
     ///     GET /users/{id} - Obtiene un usuario por su ID.
     /// </summary>
     [Get("/users/{id}")]
-    Task<Usuario?> GetUsuarioByIdAsync(int id);
+    Task<User?> GetUsuarioByIdAsync(int id);
 
     /// <summary>
     ///     POST /users - Crea un nuevo usuario.
     ///     El servidor asigna el Id automáticamente.
     /// </summary>
     [Post("/users")]
-    Task<Usuario> CreateUsuarioAsync([Body] CreateUserRequest request);
+    Task<User> CreateUsuarioAsync([Body] CreateUserRequest request);
 
     /// <summary>
     ///     PUT /users/{id} - Actualiza completamente un usuario.
     /// </summary>
     [Put("/users/{id}")]
-    Task<Usuario> UpdateUsuarioAsync(int id, [Body] UpdateUserRequest request);
+    Task<User> UpdateUsuarioAsync(int id, [Body] UpdateUserRequest request);
 
     /// <summary>
     ///     DELETE /users/{id} - Elimina un usuario.
