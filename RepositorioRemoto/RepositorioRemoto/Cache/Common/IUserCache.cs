@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-using RepositorioRemoto.Dto;
-=======
 using RepositorioRemoto.Models;
->>>>>>> feat/cache
 
 namespace RepositorioRemoto.Cache.Common;
 
