@@ -1,19 +1,9 @@
 ﻿services:
   repositorioremoto:
     image: repositorioremoto
-    container_name: repositorioremoto
     build:
       context: .
       dockerfile: RepositorioRemoto/Dockerfile
-    environment:
-      PROFILE: prod
-      Repository__PostgreSqlConnection: "Host=postgres;Port=5432;Database=users;Username=postgres;Password=postgres"
-      Cache__RedisConnection: "redis:6379"
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_started
 
   postgres:
     image: postgres:17
@@ -31,20 +21,26 @@
       interval: 5s
       timeout: 5s
       retries: 5
-
+  
   redis:
     image: redis:7
     container_name: repositorio-redis
     ports:
       - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   repositorioremoto.test:
     image: repositorioremoto.test
     build:
       context: .
       dockerfile: RepositorioRemoto.Test/Dockerfile
-    depends_on:
-      - repositorioremoto
 
 volumes:
   postgres_data:
+  redis_data:

@@ -22,7 +22,7 @@ WriteLine($"Número de argumentos: {args.Length}");
 for (var i = 0; i < args.Length; i++)
     WriteLine($"args[{i}] = '{args[i]}'");
 
-var profile = Environment.GetEnvironmentVariable("PROFILE") ?? (args.Length > 0 ? args[0].ToLower() : "dev");
+var profile = args.Length > 0 ? args[0].ToLower() : "dev";
 
 WriteLine($"profile = '{profile}'");
 
