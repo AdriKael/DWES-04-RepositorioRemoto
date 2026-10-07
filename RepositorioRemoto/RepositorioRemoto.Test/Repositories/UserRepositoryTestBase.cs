@@ -4,7 +4,7 @@ using RepositorioRemoto.Entities.AppDb;
 using RepositorioRemoto.Models;
 using RepositorioRemoto.Repositories;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Repositories;
 
 public abstract class UserRepositoryTestBase {
     protected SqliteConnection Connection = null!;

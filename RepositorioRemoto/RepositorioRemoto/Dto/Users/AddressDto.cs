@@ -1,4 +1,4 @@
-namespace RepositorioRemoto.Dto.User;
+namespace RepositorioRemoto.Dto.Users;
 
 public record AddressDto(
     string Street,

@@ -1,7 +1,7 @@
 using FluentAssertions;
 using RepositorioRemoto.Errors;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Repositories;
 
 [TestFixture]
 public class UserRepositoryCasosIncorrectosTest : UserRepositoryTestBase {

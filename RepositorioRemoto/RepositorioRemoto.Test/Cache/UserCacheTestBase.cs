@@ -1,11 +1,11 @@
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using RepositorioRemoto.Cache;
 using RepositorioRemoto.Config;
 using RepositorioRemoto.Models;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Cache;
 
 public abstract class UserCacheTestBase {
     protected IDistributedCache DistributedCache = null!;

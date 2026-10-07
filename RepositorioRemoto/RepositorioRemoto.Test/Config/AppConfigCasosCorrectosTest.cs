@@ -1,7 +1,7 @@
 using FluentAssertions;
 using RepositorioRemoto.Config;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Config;
 
 [TestFixture]
 public class AppConfigCasosCorrectosTest {

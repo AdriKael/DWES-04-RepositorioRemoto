@@ -2,7 +2,7 @@ using Moq;
 using RepositorioRemoto.Api;
 using RepositorioRemoto.Cache.Common;
 using RepositorioRemoto.Dto;
-using RepositorioRemoto.Dto.User;
+using RepositorioRemoto.Dto.Users;
 using RepositorioRemoto.Models;
 using RepositorioRemoto.Repositories;
 using RepositorioRemoto.Service.Notifications;
@@ -10,7 +10,7 @@ using RepositorioRemoto.Service.Users;
 using RepositorioRemoto.Storages;
 using RepositorioRemoto.Validators;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Service.Users;
 
 public abstract class UserServiceTestBase {
     protected Mock<IJsonPlaceholderApi> Api = null!;

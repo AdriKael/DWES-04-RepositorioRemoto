@@ -1,6 +1,6 @@
 using FluentAssertions;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Cache;
 
 [TestFixture]
 public class UserCacheCasosIncorrectosTest : UserCacheTestBase {

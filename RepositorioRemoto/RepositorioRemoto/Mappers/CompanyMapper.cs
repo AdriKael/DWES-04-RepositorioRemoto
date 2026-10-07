@@ -1,5 +1,5 @@
 using System.Text.Json;
-using RepositorioRemoto.Dto.User;
+using RepositorioRemoto.Dto.Users;
 using RepositorioRemoto.Models;
 using Serilog;
 

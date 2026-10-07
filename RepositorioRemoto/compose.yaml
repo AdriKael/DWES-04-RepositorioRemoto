@@ -1,0 +1,50 @@
+﻿services:
+  repositorioremoto:
+    image: repositorioremoto
+    container_name: repositorioremoto
+    build:
+      context: .
+      dockerfile: RepositorioRemoto/Dockerfile
+    environment:
+      PROFILE: prod
+      Repository__PostgreSqlConnection: "Host=postgres;Port=5432;Database=users;Username=postgres;Password=postgres"
+      Cache__RedisConnection: "redis:6379"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  postgres:
+    image: postgres:17
+    container_name: repositorio-postgres
+    environment:
+      POSTGRES_DB: users
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d users" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    container_name: repositorio-redis
+    ports:
+      - "6379:6379"
+
+  repositorioremoto.test:
+    image: repositorioremoto.test
+    build:
+      context: .
+      dockerfile: RepositorioRemoto.Test/Dockerfile
+    depends_on:
+      - repositorioremoto
+
+volumes:
+  postgres_data:

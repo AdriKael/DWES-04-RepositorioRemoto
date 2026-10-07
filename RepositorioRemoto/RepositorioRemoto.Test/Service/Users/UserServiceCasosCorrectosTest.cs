@@ -4,7 +4,7 @@ using Moq;
 using RepositorioRemoto.Errors;
 using RepositorioRemoto.Models;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Service.Users;
 
 [TestFixture]
 public class UserServiceCasosCorrectosTest : UserServiceTestBase {

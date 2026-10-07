@@ -1,8 +1,7 @@
 using FluentAssertions;
 using RepositorioRemoto.Config;
-using RepositorioRemoto.Infrastructure;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Infrastructure;
 
 [TestFixture]
 public class DependencyInjectionCasosIncorrectosTest {

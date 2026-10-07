@@ -39,6 +39,7 @@ public abstract record AppConfig {
         Configuration = new ConfigurationBuilder()
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile($"appsettings.{profile}.json", false, true)
+            .AddEnvironmentVariables()
             .Build();
     }
 }

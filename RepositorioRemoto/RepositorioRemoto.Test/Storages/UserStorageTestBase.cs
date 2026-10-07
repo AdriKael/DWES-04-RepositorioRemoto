@@ -1,7 +1,7 @@
 using RepositorioRemoto.Models;
 using RepositorioRemoto.Storages;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Storages;
 
 public abstract class UserStorageTestBase {
     protected UserStorage Storage = null!;

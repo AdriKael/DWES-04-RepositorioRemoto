@@ -1,7 +1,7 @@
 using FluentAssertions;
 using RepositorioRemoto.Service.Notifications;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Service.Notifications;
 
 [TestFixture]
 public class NotificationServiceCasosIncorrectosTest {
