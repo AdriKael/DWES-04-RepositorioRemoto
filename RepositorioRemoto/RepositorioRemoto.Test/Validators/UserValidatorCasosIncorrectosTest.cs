@@ -3,7 +3,7 @@ using RepositorioRemoto.Errors;
 using RepositorioRemoto.Models;
 using RepositorioRemoto.Validators;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Validators;
 
 [TestFixture]
 public class UserValidatorCasosIncorrectosTest {

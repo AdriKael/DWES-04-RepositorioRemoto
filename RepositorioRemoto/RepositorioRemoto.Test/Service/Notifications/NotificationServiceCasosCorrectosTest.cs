@@ -3,7 +3,7 @@ using RepositorioRemoto.Enums;
 using RepositorioRemoto.Models;
 using RepositorioRemoto.Service.Notifications;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Service.Notifications;
 
 [TestFixture]
 public class NotificationServiceCasosCorrectosTest {

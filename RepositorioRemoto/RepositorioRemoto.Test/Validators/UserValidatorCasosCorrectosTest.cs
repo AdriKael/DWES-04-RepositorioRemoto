@@ -1,7 +1,7 @@
 using FluentAssertions;
 using RepositorioRemoto.Validators;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Validators;
 
 [TestFixture]
 public class UserValidatorCasosCorrectosTest {

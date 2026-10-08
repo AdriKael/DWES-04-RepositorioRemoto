@@ -9,7 +9,7 @@ using RepositorioRemoto.Service.Users;
 using RepositorioRemoto.Storages;
 using RepositorioRemoto.Validators;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Infrastructure;
 
 [TestFixture]
 public class DependencyInjectionCasosCorrectosTest {

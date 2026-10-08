@@ -1,5 +1,4 @@
 using CSharpFunctionalExtensions;
-using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using RepositorioRemoto.Api;
@@ -9,7 +8,7 @@ using RepositorioRemoto.Models;
 using RepositorioRemoto.Repositories;
 using RepositorioRemoto.Service.Synchro;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Service.Synchro;
 
 [TestFixture]
 public class SynchroServiceCasosCorrectosTest {

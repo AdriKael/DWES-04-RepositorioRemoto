@@ -2,7 +2,7 @@ using FluentAssertions;
 using RepositorioRemoto.Mappers;
 using RepositorioRemoto.Models;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Mappers;
 
 [TestFixture]
 public class MappersCasosIncorrectosTest {

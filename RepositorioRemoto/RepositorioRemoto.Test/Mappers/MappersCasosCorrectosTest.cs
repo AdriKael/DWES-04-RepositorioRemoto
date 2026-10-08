@@ -1,10 +1,10 @@
 using FluentAssertions;
 using RepositorioRemoto.Dto;
-using RepositorioRemoto.Dto.User;
+using RepositorioRemoto.Dto.Users;
 using RepositorioRemoto.Mappers;
 using RepositorioRemoto.Models;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Mappers;
 
 [TestFixture]
 public class MappersCasosCorrectosTest {

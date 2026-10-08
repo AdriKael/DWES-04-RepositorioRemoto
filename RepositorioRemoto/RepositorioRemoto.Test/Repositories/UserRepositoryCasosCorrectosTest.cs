@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Repositories;
 
 [TestFixture]
 public class UserRepositoryCasosCorrectosTest : UserRepositoryTestBase {

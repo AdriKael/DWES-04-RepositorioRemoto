@@ -139,9 +139,7 @@ static async Task MenuAsync(IUserService userService, CancellationTokenSource ca
                 break;
         }
 
-        if (!cancellationTokenSource.IsCancellationRequested) {
-            WriteLine();
-        }
+        if (!cancellationTokenSource.IsCancellationRequested) WriteLine();
     }
 }
 

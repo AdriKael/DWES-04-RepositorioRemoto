@@ -2,7 +2,7 @@ using System.Text.Json;
 using FluentAssertions;
 using RepositorioRemoto.Models;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Storages;
 
 [TestFixture]
 public class UserStorageCasosCorrectosTest : UserStorageTestBase {

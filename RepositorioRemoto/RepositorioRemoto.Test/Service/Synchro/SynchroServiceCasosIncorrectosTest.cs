@@ -3,11 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using RepositorioRemoto.Api;
 using RepositorioRemoto.Cache.Common;
-using RepositorioRemoto.Models;
 using RepositorioRemoto.Repositories;
 using RepositorioRemoto.Service.Synchro;
 
-namespace RepositorioRemoto.Test;
+namespace RepositorioRemoto.Test.Service.Synchro;
 
 [TestFixture]
 public class SynchroServiceCasosIncorrectosTest {
