@@ -64,6 +64,7 @@ public class UserRepository : IUserRepository {
         _logger.Debug("[REPO-UPDATE] Actualizando usuario con ID {Id}", id);
         try {
             var existing = await _context.Users
+                .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if (existing is null) {
